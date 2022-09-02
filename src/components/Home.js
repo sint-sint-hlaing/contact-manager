@@ -9,7 +9,7 @@ const Home = () => {
   const [data, setData] = useState();
 
   const loadData = () => {
-    axios.get("http://localhost:3500/contacts").then((res) => {
+    axios.get("https://62c65bdc2b03e73a58cb8206.mockapi.io/contacts").then((res) => {
       setData(res.data);
     });
   };
@@ -19,7 +19,7 @@ const Home = () => {
   }, []);
 
   const Delete = (id) => {
-    axios.delete(`http://localhost:3500/contacts/${id}`).then(() => {
+    axios.delete(`https://62c65bdc2b03e73a58cb8206.mockapi.io/contacts/${id}`).then(() => {
       loadData();
     });
   };

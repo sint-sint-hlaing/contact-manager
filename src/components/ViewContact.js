@@ -9,7 +9,7 @@ const ViewContact = () => {
 
 
   useEffect(() => {
-    axios.get(`http://localhost:3500/contacts/${id}`).then((res) => {
+    axios.get(`https://62c65bdc2b03e73a58cb8206.mockapi.io/contacts/${id}`).then((res) => {
         setData(res.data)
     })
 }, [])

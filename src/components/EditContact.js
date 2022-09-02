@@ -25,7 +25,7 @@ const EditContact = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:3500/contacts/${id}`).then((res) => {
+    axios.get(`https://62c65bdc2b03e73a58cb8206.mockapi.io/contacts/${id}`).then((res) => {
         setName(res.data.name)
         setImage(res.data.img)
         setEmail(res.data.email)
@@ -39,7 +39,7 @@ const EditContact = () => {
 let Update = (e) => {
     e.preventDefault()
     axios
-        .put(`http://localhost:3500/contacts/${id}`, data)
+        .put(`https://62c65bdc2b03e73a58cb8206.mockapi.io/contacts/${id}`, data)
         .then(()=>navigate("/"))
 }
 

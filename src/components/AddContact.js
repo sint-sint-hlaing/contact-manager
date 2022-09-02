@@ -24,7 +24,7 @@ const AddContact = () => {
   };
 
   function Submit() {
-    axios.post("http://localhost:3500/contacts", data).then(()=>navigate("/"));
+    axios.post("https://62c65bdc2b03e73a58cb8206.mockapi.io/contacts", data).then(()=>navigate("/"));
   }
 
   return (
