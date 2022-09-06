@@ -1,6 +1,6 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate , useParams} from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 
 const EditContact = () => {
   let navigate = useNavigate();
@@ -12,11 +12,11 @@ const EditContact = () => {
   const [job, setJob] = useState("");
   const [birth, setBirthday] = useState("");
   const [relationship, setRelationship] = useState("");
-  const { id } = useParams()
+  const { id } = useParams();
 
   const data = {
     name: name,
-    img:img,
+    img: img,
     email: email,
     phone: phone,
     job: job,
@@ -25,28 +25,30 @@ const EditContact = () => {
   };
 
   useEffect(() => {
-    axios.get(`https://62c65bdc2b03e73a58cb8206.mockapi.io/contacts/${id}`).then((res) => {
-        setName(res.data.name)
-        setImage(res.data.img)
-        setEmail(res.data.email)
-        setPhone(res.data.phone)
-        setJob(res.data.job)
-        setBirthday(res.data.birth)
-        setRelationship(res.data.relationship)
-    })
-}, [])
-
-let Update = (e) => {
-    e.preventDefault()
     axios
-        .put(`https://62c65bdc2b03e73a58cb8206.mockapi.io/contacts/${id}`, data)
-        .then(()=>navigate("/"))
-}
+      .get(`https://62c65bdc2b03e73a58cb8206.mockapi.io/contacts/${id}`)
+      .then((res) => {
+        setName(res.data.name);
+        setImage(res.data.img);
+        setEmail(res.data.email);
+        setPhone(res.data.phone);
+        setJob(res.data.job);
+        setBirthday(res.data.birth);
+        setRelationship(res.data.relationship);
+      });
+  }, []);
+
+  let Update = (e) => {
+    e.preventDefault();
+    axios
+      .put(`https://62c65bdc2b03e73a58cb8206.mockapi.io/contacts/${id}`, data)
+      .then(() => navigate("/"));
+  };
 
   return (
     <div className=" flex items-center flex-col gap-3 p-14">
       <h1 className=" text-2xl text-purple-700 my-3 font-medium">
-        Add New Contact
+        Edit Contact
       </h1>
       <div className=" flex flex-col gap-5 my-3">
         <div className="flex flex-col md:flex-row justify-between gap-2 md:gap-4">
@@ -117,11 +119,11 @@ let Update = (e) => {
           <select
             id="relation"
             class="rounded-md outline-none bg-inherit border-2 border-gray-400 px-3 py-1 w-full md:w-80"
-            onChange={(e)=>setRelationship(e.target.value)}
+            onChange={(e) => setRelationship(e.target.value)}
             value={relationship}
-            defaultValue={'default'}
+            defaultValue={"default"}
           >
-            <option value="default" >Choose a relationship</option>
+            <option value="default">Choose a relationship</option>
             <option value="father">Father</option>
             <option value="mother">Mother</option>
             <option value="friend">Friend</option>
@@ -132,13 +134,24 @@ let Update = (e) => {
           </select>
         </div>
       </div>
-      <button
-        type="button"
-        class=" my-2 focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
-        onClick={Update}
-      >
-        Update
-      </button>
+      <div className=" flex gap-5">
+        <Link to="/">
+          <button
+            type="button"
+            class=" my-2 focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+            onClick=""
+          >
+            Cancel
+          </button>
+        </Link>
+        <button
+          type="button"
+          class=" my-2 focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+          onClick={Update}
+        >
+          Update
+        </button>
+      </div>
     </div>
   );
 };

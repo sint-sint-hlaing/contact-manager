@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const AddContact = () => {
   let navigate = useNavigate();
@@ -15,7 +15,7 @@ const AddContact = () => {
 
   const data = {
     name: name,
-    img:img,
+    img: img,
     email: email,
     phone: phone,
     job: job,
@@ -24,7 +24,9 @@ const AddContact = () => {
   };
 
   function Submit() {
-    axios.post("https://62c65bdc2b03e73a58cb8206.mockapi.io/contacts", data).then(()=>navigate("/"));
+    axios
+      .post("https://62c65bdc2b03e73a58cb8206.mockapi.io/contacts", data)
+      .then(() => navigate("/"));
   }
 
   return (
@@ -101,11 +103,11 @@ const AddContact = () => {
           <select
             id="relation"
             class="rounded-md outline-none bg-inherit border-2 border-gray-400 px-3 py-1 w-full md:w-80"
-            onChange={(e)=>setRelationship(e.target.value)}
+            onChange={(e) => setRelationship(e.target.value)}
             value={relationship}
-            defaultValue={'default'}
+            defaultValue={"default"}
           >
-            <option value="default" >Choose a relationship</option>
+            <option value="default">Choose a relationship</option>
             <option value="father">Father</option>
             <option value="mother">Mother</option>
             <option value="friend">Friend</option>
@@ -116,13 +118,24 @@ const AddContact = () => {
           </select>
         </div>
       </div>
-      <button
-        type="button"
-        class=" my-2 focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
-        onClick={Submit}
-      >
-        Add
-      </button>
+      <div className=" flex gap-5">
+        <Link to="/">
+          <button
+            type="button"
+            class=" my-2 focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+            onClick=""
+          >
+            Cancel
+          </button>
+        </Link>
+        <button
+          type="button"
+          class=" my-2 focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+          onClick={Submit}
+        >
+          Add
+        </button>
+      </div>
     </div>
   );
 };
