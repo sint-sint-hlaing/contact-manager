@@ -29,23 +29,23 @@ const ViewContact = () => {
               {data.name}
             </p>
           </div>
-          <div className=" flex gap-4">
+          <div className=" flex flex-wrap  gap-4">
             <p>Email : </p>
             <p>{data.email}</p>
           </div>
-          <div className=" flex  gap-4">
+          <div className=" flex flex-wrap  gap-4">
             <p>Phone Number : </p>
             <p>{data.phone}</p>
           </div>
-          <div className=" flex gap-4">
+          <div className=" flex flex-wrap gap-4">
             <p>Job : </p>
             <p>{data.job}</p>
           </div>
-          <div className=" flex gap-4">
+          <div className=" flex flex-wrap gap-4">
             <p>Date of Birth : </p>
             <p>{data.birth}</p>
           </div>
-          <div className=" flex  gap-4">
+          <div className=" flex flex-wrap  gap-4">
             <p>Relationship : </p>
             <p>{data.relationship}</p>
           </div>

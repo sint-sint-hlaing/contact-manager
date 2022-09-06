@@ -34,7 +34,7 @@ const Home = () => {
 
   return (
     <div className="p-5 md:p-10">
-      <h1 className=" text-center text-purple-700 font-semibold text-xl md:text-3xl mb-3">
+      <h1 className=" text-center text-purple-700 font-semibold text-2xl md:text-3xl mb-3">
         Contact Manager
       </h1>
       <div className=" flex justify-between items-center gap-2 my-10">
